@@ -1,0 +1,431 @@
+/* ============================
+   Variáveis de Tema (Claro e Escuro)
+============================= */
+:root {
+  --bg: #ffffff;
+  --text-color: #000000;
+  --title-color: #0077ff;
+  --card-bg: rgba(240, 240, 240, 0.9);
+  --btn-bg: #0077ff;
+  --btn-text: #ffffff;
+  --btn-hover-bg: #005fcc;
+  --btn-border: #0077ff;
+  --shadow-light: rgba(0, 0, 0, 0.1);
+  --shadow-dark: rgba(0, 0, 0, 0.6);
+  --code-color: #0047b3; /* Azul forte para códigos */
+}
+
+body.dark {
+  --bg: #000000; /* preto no modo escuro */
+  --text-color: #f0f0f0;
+  --title-color: #3399ff;
+  --card-bg: rgba(20, 20, 20, 0.85);
+  --btn-bg: #3399ff;
+  --btn-text: #000000;
+  --btn-hover-bg: #66bbff;
+  --btn-border: #3399ff;
+  --shadow-light: rgba(0, 0, 0, 0.3);
+  --shadow-dark: rgba(0, 0, 0, 0.7);
+  --code-color: #3399ff;
+}
+
+/* ============================
+   Reset e Layout geral
+============================= */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--bg);
+  color: var(--text-color);
+  margin: 0;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background 0.4s ease, color 0.4s ease;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* ============================
+   Canvas Pixel de Fundo
+============================= */
+#pixelCanvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  background-color: var(--bg);
+}
+
+/* ============================
+   Cabeçalho fixo
+============================= */
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background: rgba(0, 119, 255, 0.05);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 10px var(--shadow-light);
+  z-index: 10;
+}
+
+/* ============================
+   Navegação
+============================= */
+nav {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1rem;
+}
+
+.menu {
+  list-style: none;
+  display: flex;
+  gap: 1.2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.menu li a {
+  color: var(--title-color);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.menu li a:hover,
+.menu li a:focus {
+  color: var(--btn-hover-bg);
+}
+
+.menu li a span {
+  position: relative;
+  z-index: 1;
+}
+
+/* Botão alternar tema */
+#toggle-theme {
+  font-size: 1.3rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--title-color);
+  transition: color 0.3s ease;
+}
+
+#toggle-theme:hover,
+#toggle-theme:focus {
+  color: var(--btn-hover-bg);
+}
+
+/* ============================
+   Main e Seções (balões)
+============================= */
+main {
+  max-width: 900px;
+  margin: 90px auto 2rem;
+  padding: 0 1rem;
+  flex-grow: 1;
+  z-index: 5;
+  position: relative;
+}
+
+/* Balões (section) */
+section.balão {
+  background: var(--card-bg);
+  padding: 1.5rem 2rem;
+  margin-bottom: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px var(--shadow-light);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  transition: background 0.5s ease, box-shadow 0.3s ease, border-color 0.5s ease;
+}
+
+/* Borda azul mais forte no modo escuro */
+body.dark section.balão {
+  border: 3px solid #0047b3;
+  box-shadow: none !important;
+}
+
+/* Títulos */
+h1, h2, h3 {
+  color: var(--title-color);
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 2.2rem;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.8rem;
+}
+
+h3 {
+  font-size: 1.3rem;
+}
+
+/* Parágrafos */
+p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: var(--text-color);
+}
+
+/* Imagem Avatar */
+.logo {
+  width: 140px;
+  height: 140px;
+  display: block;
+  margin: 0 auto 1rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* ============================
+   Seção de perfil (Sobre)
+============================= */
+section.balão.pessoa .perfil {
+  display: flex;
+  gap: 1.4rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.foto-perfil {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--title-color);
+  flex-shrink: 0;
+}
+
+section.balão.pessoa div {
+  flex: 1 1 300px;
+}
+
+/* ============================
+   Formulário (Contato)
+============================= */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 400px;
+  margin: 1rem auto 0;
+}
+
+label {
+  font-weight: 600;
+  color: var(--title-color);
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  padding: 0.6rem 0.8rem;
+  border: 2px solid var(--btn-border);
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+  background-color: var(--bg);
+  color: var(--text-color);
+  resize: vertical;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+textarea:focus {
+  border-color: var(--btn-hover-bg);
+  outline: none;
+}
+
+button[type="submit"] {
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  border: none;
+  padding: 0.75rem 1.2rem;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover,
+button[type="submit"]:focus {
+  background-color: var(--btn-hover-bg);
+}
+
+/* ============================
+   Habilidades - Toggle
+============================= */
+.pessoa-habilidade {
+  margin-bottom: 2rem;
+}
+
+.toggle-habilidades-btn {
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.toggle-habilidades-btn:hover,
+.toggle-habilidades-btn:focus {
+  background: var(--btn-hover-bg);
+}
+
+/* ============================
+   Rodapé
+============================= */
+footer {
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.9rem;
+  color: var(--text-color);
+  border-top: 1px solid rgba(0,0,0,0.1);
+  margin-top: auto;
+}
+
+/* ============================
+   Responsividade básica
+============================= */
+@media (max-width: 700px) {
+  nav ul.menu {
+    gap: 0.8rem;
+  }
+
+  section.balão.pessoa .perfil {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .foto-perfil {
+    margin-bottom: 1rem;
+  }
+}
+
+/* Garante balões com fundo claro no modo claro, e com borda azul e sombra no modo escuro */
+section {
+  background: var(--card-bg);
+  padding: 1.5rem 2rem;
+  margin-bottom: 2rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px var(--shadow-light);
+  backdrop-filter: blur(10px);
+  border: 1px solid transparent;
+  transition: background 0.5s ease, box-shadow 0.3s ease, border-color 0.5s ease;
+}
+
+/* No modo escuro borda azul forte, sombra intensa */
+body.dark section {
+  border: 3px solid #0047b3;
+  box-shadow: 0 8px 40px rgba(0, 71, 179, 0.8);
+  background: var(--card-bg);
+}
+
+/* Habilidades listas escondidas */
+.habilidades-lista {
+  display: none;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+/* Estilo das habilidades */
+.habilidade {
+  border-left: 4px solid var(--btn-bg);
+  padding-left: 1rem;
+  margin-bottom: 0.6rem;
+}
+
+.habilidade h3 {
+  margin: 0 0 0.3rem 0;
+  color: var(--title-color);
+}
+
+.habilidade p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+/* Espaçamento e estilo dos botões de toggle */
+.toggle-habilidades-btn {
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease, transform 0.2s ease;
+  margin-bottom: 1rem;
+}
+
+.toggle-habilidades-btn:hover {
+  background: var(--btn-hover-bg);
+  transform: scale(1.05);
+}
+
+/* Container para as pessoas */
+.habilidades-pessoas {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.pessoa-habilidade {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+
+/* Responsividade */
+@media (max-width: 768px) {
+  main {
+    margin: 120px 1rem 2rem;
+  }
+
+  .habilidades-pessoas {
+    padding: 0 1rem;
+  }
+
+  section.balão, .pessoa-habilidade {
+    padding: 1rem 1.2rem;
+  }
+}
+
+/* Balões dentro da seção de habilidades com borda e sombra mais forte */
+.habilidades-pessoas section.balão {
+  /* deixa exatamente igual aos outros balões */
+  background: var(--card-bg);
+  box-shadow: 0 8px 30px var(--shadow-light);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
+}
+
