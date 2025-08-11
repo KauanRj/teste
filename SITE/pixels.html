@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfólio de Programadores</title>
+  <style>
+    :root {
+      --bg-light: #ffffff;
+      --bg-dark: #0a0a0a;
+      --text-light: #000000;
+      --text-dark: #ffffff;
+      --accent: #007BFF;
+      --pixel-size: 2px;
+      --code-color: rgba(128, 0, 128, 0.85);
+      --code-color-hover: rgba(128, 0, 128, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-light);
+      transition: background-color 0.4s, color 0.4s;
+      overflow-x: hidden;
+    }
+
+    .pixel-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .code-floating {
+      position: absolute;
+      font-size: 14px;
+      font-family: monospace;
+      color: var(--code-color);
+      animation: float 18s linear infinite;
+      white-space: nowrap;
+      user-select: none;
+      transition: color 0.3s, transform 0.3s;
+    }
+
+    .code-floating:hover {
+      color: var(--code-color-hover);
+      transform: scale(1.2);
+    }
+
+    @keyframes float {
+      from { transform: translateY(100vh) translateX(0); opacity: 0.9; }
+      to { transform: translateY(-20vh) translateX(20vw); opacity: 1; }
+    }
+
+    header {
+      padding: 3rem 2rem;
+      text-align: center;
+      background-color: var(--accent);
+      color: white;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    }
+
+    section {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 2rem;
+      background-color: #ffffff; /* cor sólida e visível no modo claro */
+      border: 2px solid #e0e0e0;
+      border-radius: 20px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(5px);
+    }
+
+    h1, h2 {
+      color: var(--accent);
+      margin-bottom: 1rem;
+    }
+
+    ul {
+      padding-left: 1.5rem;
+    }
+
+    .toggle-mode {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      z-index: 10;
+    }
+
+    body.dark-mode {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
+    }
+
+    body.dark-mode section {
+      background-color: rgba(20, 20, 20, 0.95);
+      color: var(--text-dark);
+      border: 2px solid #333;
+    }
+
+    body.dark-mode .code-floating {
+      color: rgba(186, 85, 211, 0.7);
+    }
+  </style>
+</head>
+<body>
+  <div class="pixel-background" id="pixelBackground"></div>
+  <button class="toggle-mode" onclick="toggleMode()">Alternar modo</button>
+
+  <header>
+    <h1>Portfólio de Kauan & Marcos</h1>
+    <p>Desenvolvedores com paixão por tecnologia e código: HTML, CSS, JavaScript, Python e C++</p>
+  </header>
+
+  <section>
+    <h2>Sobre Nós</h2>
+    <p>Somos dois programadores que compartilham o entusiasmo por resolver problemas reais com soluções criativas em código. Trabalhamos com front-end e back-end, sempre buscando aprender novas tecnologias e aplicar boas práticas de desenvolvimento.</p>
+  </section>
+
+  <section>
+    <h2>Habilidades</h2>
+    <ul>
+      <li>HTML5 e CSS3 com foco em responsividade</li>
+      <li>JavaScript moderno (ES6+)</li>
+      <li>Python para automações e back-end</li>
+      <li>C++ para desafios de lógica e desempenho</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Projetos em Destaque</h2>
+    <p>Confira em breve nossos projetos com repositórios GitHub, capturas de tela e explicações técnicas detalhadas.</p>
+  </section>
+
+  <script>
+    function toggleMode() {
+      document.body.classList.toggle('dark-mode');
+    }
+
+    const codes = [
+      'console.log("Hello, world!");',
+      'print("Python rocks!")',
+      'for(int i=0; i<10; i++){}',
+      '<div class="code">HTML</div>',
+      'const x = () => {}',
+      '#include<iostream>',
+      'let sum = a + b;',
+      'def soma(a, b): return a + b',
+      'System.out.println("Java!");'
+    ];
+
+    const bg = document.getElementById('pixelBackground');
+
+    for (let i = 0; i < 40; i++) {
+      const el = document.createElement('div');
+      el.className = 'code-floating';
+      el.style.left = Math.random() * 100 + 'vw';
+      el.style.top = Math.random() * 100 + 'vh';
+      el.style.animationDuration = (10 + Math.random() * 15) + 's';
+      el.textContent = codes[Math.floor(Math.random() * codes.length)];
+      bg.appendChild(el);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio - Carregamento</title>
+<style>
+  /* ===== RESET ===== */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: Arial, sans-serif;
+    transition: background 0.5s, color 0.5s;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ===== FUNDO MODO CLARO ===== */
+  body.light-mode {
+    background-color: #f5f5f5;
+    background-image: radial-gradient(#d0d0d0 1px, transparent 1px);
+    background-size: 20px 20px;
+    color: #222;
+  }
+
+  /* ===== FUNDO MODO ESCURO ===== */
+  body.dark-mode {
+    background: linear-gradient(45deg, #0a0a0a, #111);
+    background-size: 400% 400%;
+    animation: gradientMove 15s ease infinite;
+    color: #fff;
+  }
+
+  @keyframes gradientMove {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
+  }
+
+  /* ===== LOADING ===== */
+  #loading {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+  }
+
+  #loading.hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .loader-bar {
+    width: 200px;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .loader-bar::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    background: linear-gradient(90deg, #6a0dad, #9b4dff);
+    animation: loadMove 1s infinite;
+  }
+
+  @keyframes loadMove {
+    0% { left: -50%; }
+    50% { left: 100%; }
+    100% { left: -50%; }
+  }
+
+  /* ===== CONTEÚDO ===== */
+  header {
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  nav a {
+    margin: 0 1rem;
+    text-decoration: none;
+    font-weight: bold;
+    color: inherit;
+    transition: color 0.3s;
+  }
+
+  nav a:hover {
+    color: #6a0dad;
+  }
+
+  section {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 2px solid #ccc;
+    border-radius: 15px;
+    backdrop-filter: blur(5px);
+    transition: background 0.5s, border 0.5s;
+  }
+
+  body.dark-mode section {
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 2px solid #6a0dad;
+  }
+
+  /* ===== BOTÃO MODO ===== */
+  .toggle-mode {
+    padding: 0.5rem 1rem;
+    border: none;
+    background: #6a0dad;
+    color: #fff;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+</style>
+</head>
+<body class="light-mode">
+
+<!-- Tela de Carregamento -->
+<div id="loading">
+  <div class="loader-bar"></div>
+</div>
+
+<header>
+  <h1>Portfólio</h1>
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Projetos</a>
+    <a href="#">Contato</a>
+  </nav>
+  <button class="toggle-mode">🌙 Modo Escuro</button>
+</header>
+
+<section>
+  <h2>Bem-vindo!</h2>
+  <p>Este é um portfólio de dois desenvolvedores apaixonados por programação: HTML, CSS, JavaScript, Python e C++.</p>
+</section>
+
+<script>
+  // LOADING
+  window.addEventListener("load", () => {
+    document.getElementById("loading").classList.add("hidden");
+  });
+
+  // TOGGLE MODO CLARO/ESCURO
+  const toggleBtn = document.querySelector(".toggle-mode");
+  toggleBtn.addEventListener("click", () => {
+    document.body.classList.toggle("dark-mode");
+    document.body.classList.toggle("light-mode");
+    toggleBtn.textContent = document.body.classList.contains("dark-mode") ? "☀️ Modo Claro" : "🌙 Modo Escuro";
+  });
+</script>
+
+</body>
+</html>
