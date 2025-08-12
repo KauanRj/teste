@@ -24,19 +24,60 @@
   </header>
 
   <main>
-    <section class="balão">
-      <h1>Meus Projetos</h1>
-      <p>Aqui estão alguns projetos que desenvolvi ou participei:</p>
+    <section class="projeto">
 
-      <article class="projeto-item">
-        <h2>🌡️ Sistema de Monitoramento de Temperatura com Arduino</h2>
-        <p>Projeto usando Arduino Uno, sensor LM35 e display LCD para monitorar temperatura, com aviso visual quando fora do intervalo ideal.</p>
-      </article>
+      <!-- Projetos do Kauan -->
+      <div class="pessoa-projeto">
+        <h2>Projetos de Kauan Rodrigues Justo</h2>
 
-      <article class="projeto-item">
-        <h2>⚡ Jogo da Memória em HTML e JavaScript</h2>
-        <p>Um jogo interativo criado para treinar lógica de programação e manipulação do DOM.</p>
-      </article>
+        <button class="toggle-projetos-btn" data-target="kauan-projetos">
+          Clique aqui para ver os projetos
+        </button>
+
+        <div id="kauan-projetos" class="projetos-lista">
+          <section class="projeto">
+            <h3>Site pessoal / Portfólio</h3>
+            <p>Este site pessoal/portfólio foi desenvolvido para apresentar minhas habilidades, projetos e informações profissionais. Ele utiliza HTML, CSS e JavaScript para criar uma experiência responsiva, moderna e interativa, com tema claro/escuro e um fundo animado em pixel art que remete ao universo da programação.</p>
+            <div class="tecnologias">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">JavaScript</span>
+            </div>
+          </section>
+
+          <section class="projeto">
+            <h3>Robô RMAI - Monitor Agrícola Inteligente</h3>
+            <p>Robô criado para a Feira Projete da ETE em Santa Rita de Sapucaí. O RMAI monitora pequenas áreas de plantio, medindo temperatura ambiente, umidade do solo e luminosidade para ajudar no controle e cuidado agrícola. Desenvolvido com integração de sensores e foco em automação inteligente.</p>
+            <div class="tecnologias">
+              <span class="tag">Arduino</span>
+              <span class="tag">Sensor de Temperatura</span>
+              <span class="tag">Sensor de Umidade</span>
+              <span class="tag">Sensor de Luminosidade</span>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <!-- Projetos do Marcos -->
+      <div class="pessoa-projeto">
+        <h2>Projetos de Marcos Junior da Silva</h2>
+
+        <button class="toggle-projetos-btn" data-target="marcos-projetos">
+          Clique aqui para ver os projetos
+        </button>
+
+        <div id="marcos-projetos" class="projetos-lista">
+          <section class="projeto">
+            <h3>Sistema de Controle para Robótica</h3>
+            <p>Desenvolvimento de um sistema de controle para robôs usando Arduino e C++. Projeto focado em automação e integração de sensores para melhorar a precisão e eficiência dos robôs em competições.</p>
+            <div class="tecnologias">
+              <span class="tag">Arduino</span>
+              <span class="tag">C++</span>
+            </div>
+          </section>
+        </div>
+      </div>
+
     </section>
   </main>
 

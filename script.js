@@ -88,3 +88,38 @@ window.addEventListener('resize', resize);
 resize();
 ctx.font = `${pixelSize}px monospace`;
 loop();
+
+
+document.querySelectorAll('.toggle-projetos-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const targetId = btn.dataset.target;
+    const target = document.getElementById(targetId);
+    const isAtivo = target.classList.contains('ativo');
+
+    if(isAtivo) {
+      target.classList.remove('ativo');
+      btn.textContent = 'Ver projetos';
+    } else {
+      target.classList.add('ativo');
+      btn.textContent = 'Ocultar projetos';
+    }
+  });
+});
+
+document.querySelectorAll('.toggle-projetos-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const targetId = btn.dataset.target;
+    const target = document.getElementById(targetId);
+
+    if (target.style.display === 'flex') {
+      target.style.display = 'none';
+      btn.textContent = 'Clique aqui para ver os projetos';
+    } else {
+      target.style.display = 'flex';
+      btn.textContent = 'Ocultar projetos';
+    }
+  });
+});
+
+
+

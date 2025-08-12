@@ -429,3 +429,100 @@ body.dark section {
   backdrop-filter: blur(10px);
 }
 
+
+/* Projetos listas escondidas */
+.projetos-lista {
+  display: none;
+  flex-direction: column;
+  gap: 0.8rem;
+  max-width: 700px;
+  margin: 0 auto 2rem auto;
+}
+
+/* Estilo dos projetos */
+/* Balões de projetos no modo claro (mesmo tom que habilidades) */
+.projeto {
+  background: var(--card-bg); /* igual habilidades */
+  padding: 1.5rem 2rem;
+  border-radius: 20px;
+  box-shadow: 0 8px 30px var(--shadow-light);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(0, 0, 0, 0.1); /* linha bem clara e discreta */
+  transition: background 0.5s ease, box-shadow 0.3s ease, border-color 0.5s ease;
+  margin-bottom: 1.5rem;
+}
+
+/* No modo escuro, borda azul forte e sombra intensa */
+body.dark .projeto {
+  border: 3px solid #0047b3;
+  box-shadow: 0 8px 40px rgba(0, 71, 179, 0.8);
+  background: var(--card-bg);
+}
+
+
+.projeto h3 {
+  margin: 0 0 0.3rem 0;
+  color: var(--title-color);
+}
+
+.projeto p {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--text-color);
+}
+
+/* Espaçamento e estilo dos botões de toggle */
+.toggle-projetos-btn {
+  background: var(--btn-bg);
+  color: var(--btn-text);
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease, transform 0.2s ease;
+  margin-bottom: 1rem;
+}
+
+.toggle-projetos-btn:hover {
+  background: var(--btn-hover-bg);
+  transform: scale(1.05);
+}
+
+/* Container para as pessoas */
+.projetos-pessoas {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.pessoa-projeto {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Centralizar o título da pessoa */
+.pessoa-projeto h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+  color: var(--title-color);
+}
+.tecnologias {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem; /* antes era 0.5rem, aumentei aqui */
+}
+
+
+.tag {
+  display: inline-block;
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  padding: 0.3rem 0.8rem;
+  margin-right: 0.5rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
