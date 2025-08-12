@@ -540,5 +540,6 @@ body.dark .projeto {
 
 /* Aplica a animação aos balões quando a página carrega */
 section.balão {
-  animation: subirBalão 0.6s ease forwards;
+  animation: subirBalão 0.8s ease forwards;
 }
+
